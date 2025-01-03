@@ -3,11 +3,12 @@
 import Image from "next/image";
 import PageContainer from "../containers/PageContainer";
 import Counter from "../general/Counter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Rating } from "@mui/material";
 import Button from "../general/Button";
 import Comment from "../detail/Comment";
 import Heading from "../general/Heading";
+import UseCart from "@/hooks/useCart";
 
 export type CardProductProps = {
   id: string;
@@ -20,6 +21,9 @@ export type CardProductProps = {
 };
 
 const DetailClient = ({ product }: { product: any }) => {
+  const { productCartQty, addToBasket, cartPrdcts } = UseCart();
+  const [displayButton, setDisplayButton] = useState(false);
+
   const [cardProduct, setCardProduct] = useState<CardProductProps>({
     id: product?.id,
     name: product?.name,
@@ -29,6 +33,16 @@ const DetailClient = ({ product }: { product: any }) => {
     inStock: product?.inStock,
     quantity: 1,
   });
+
+  useEffect(() => {
+    setDisplayButton(false);
+    const controlDisplay: any = cartPrdcts?.findIndex(
+      (cart) => cart.id === product.id
+    );
+    if (controlDisplay > -1) {
+      setDisplayButton(true);
+    }
+  }, [cartPrdcts]);
 
   const increaseDunc = () => {
     if (cardProduct.quantity == 10) return;
@@ -67,15 +81,33 @@ const DetailClient = ({ product }: { product: any }) => {
                 <div className="text-red-500">Out of Stock</div>
               )}
             </div>
-            <Counter
-              cardProduct={cardProduct}
-              increaseFunc={increaseDunc}
-              decreaseFunc={decreaseFunc}
-            />
             <div className="text-lg md:text-2xl text-orange-600 font-bold">
               {(product?.price).toFixed(2)} £
             </div>
-            <Button text="Add to basket" small onClick={() => {}} />
+            {displayButton ? (
+              <>
+                <Button
+                  text="Product in basket"
+                  small
+                  outline
+                  onClick={() => {}}
+                />
+              </>
+            ) : (
+              <>
+                <Counter
+                  cardProduct={cardProduct}
+                  increaseFunc={increaseDunc}
+                  decreaseFunc={decreaseFunc}
+                />
+
+                <Button
+                  text="Add to basket"
+                  small
+                  onClick={() => addToBasket(cardProduct)}
+                />
+              </>
+            )}
           </div>
         </div>
         <Heading text="Reviews" />
