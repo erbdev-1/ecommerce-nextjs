@@ -8,11 +8,16 @@ import {
   useEffect,
   useState,
 } from "react";
+import toast from "react-hot-toast";
 
 interface CartContextType {
   productCartQty: number;
   cartPrdcts: CardProductProps[] | null;
   addToBasket: (product: CardProductProps) => void;
+  addToBasketIncrease: (product: CardProductProps) => void;
+  addToBasketDecrease: (product: CardProductProps) => void;
+  removeFromCart: (product: CardProductProps) => void;
+  removeCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -31,6 +36,58 @@ export const CartContextProvider = (props: Props) => {
     setCartPrdcts(getItemParse);
   }, []);
 
+  const addToBasketIncrease = useCallback(
+    (product: CardProductProps) => {
+      let updatedCart;
+      if (product.quantity === 10) {
+        return toast.error("You can't add more than 10 items");
+      }
+
+      if (cartPrdcts) {
+        updatedCart = [...cartPrdcts];
+        const existingItem = cartPrdcts.findIndex(
+          (item) => item.id === product.id
+        );
+        if (existingItem > -1) {
+          updatedCart[existingItem].quantity = ++updatedCart[existingItem]
+            .quantity;
+        }
+        setCartPrdcts(updatedCart);
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+      }
+    },
+    [cartPrdcts]
+  );
+
+  const addToBasketDecrease = useCallback(
+    (product: CardProductProps) => {
+      let updatedCart;
+      if (product.quantity == 1) {
+        return toast.error("You can't decrease less than 1 item");
+      }
+
+      if (cartPrdcts) {
+        updatedCart = [...cartPrdcts];
+        const existingItem = cartPrdcts.findIndex(
+          (item) => item.id === product.id
+        );
+        if (existingItem > -1) {
+          updatedCart[existingItem].quantity = --updatedCart[existingItem]
+            .quantity;
+        }
+        setCartPrdcts(updatedCart);
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+      }
+    },
+    [cartPrdcts]
+  );
+
+  const removeCart = useCallback(() => {
+    setCartPrdcts(null);
+    localStorage.removeItem("cart", JSON.stringify(null));
+    toast.success("Cart cleared");
+  }, []);
+
   const addToBasket = useCallback(
     (product) => {
       setCartPrdcts((prev) => {
@@ -40,6 +97,7 @@ export const CartContextProvider = (props: Props) => {
         } else {
           updatedCart = [product];
         }
+        toast.success("Product added to cart");
         localStorage.setItem("cart", JSON.stringify(updatedCart));
         return updatedCart;
       });
@@ -47,10 +105,29 @@ export const CartContextProvider = (props: Props) => {
     [cartPrdcts]
   );
 
+  const removeFromCart = useCallback(
+    (product: CardProductProps) => {
+      if (cartPrdcts) {
+        const filteredProducts = cartPrdcts.filter(
+          (cart) => cart.id !== product.id
+        );
+
+        setCartPrdcts(filteredProducts);
+        toast.success("Product removed from cart");
+        localStorage.setItem("cart", JSON.stringify(filteredProducts));
+      }
+    },
+    [cartPrdcts]
+  );
+
   const value = {
     productCartQty,
     addToBasket,
+    addToBasketIncrease,
+    addToBasketDecrease,
     cartPrdcts,
+    removeFromCart,
+    removeCart,
   };
   return <CartContext.Provider value={value} {...props} />;
 };
