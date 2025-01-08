@@ -1,17 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 
-// Global tip bildirimini genişletmek için TypeScript kullanıyoruz
+// NodeJS global arayüzünü genişlet
 declare global {
-  // `globalThis` üzerinde `prisma` adında bir değişken tanımlıyoruz
-  // Bu değişken ya `PrismaClient` örneği ya da `undefined` olabilir
-  let prisma: PrismaClient | undefined;
+  var prisma: PrismaClient | undefined;
 }
 
-const client = globalThis.prisma || new PrismaClient();
+// Eğer global.prisma mevcutsa onu kullan, yoksa yeni bir PrismaClient oluştur
+const prisma = global.prisma || new PrismaClient();
 
 // Geliştirme ortamında, oluşturulan PrismaClient örneğini global `prisma` değişkenine atıyoruz
 if (process.env.NODE_ENV !== "production") {
-  globalThis.prisma = prisma;
+  global.prisma = prisma;
 }
 
-export default client;
+export default prisma;

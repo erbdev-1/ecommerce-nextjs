@@ -1,48 +1,58 @@
 "use client";
-
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
+
 import AuthContainer from "../containers/AuthContainer";
+import Button from "../general/Button";
 import Heading from "../general/Heading";
 import Input from "../general/Input";
-import Button from "../general/Button";
 import Link from "next/link";
-import toast from "react-hot-toast";
 import axios from "axios";
+import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { User } from "@prisma/client";
+import { useEffect } from "react";
 
-const RegisterClient = () => {
-    const router = useRouter(); 
-   
+interface RegisterClientProps {
+  currentUser: User | null | undefined;
+}
+const RegisterClient: React.FC<RegisterClientProps> = ({ currentUser }) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<FieldValues>();
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    axios
-      .post("/api/register", data)
-      .then(() => { toast.success("User created!")
-       signIn("credentials", {
+    axios.post("/api/register", data).then(() => {
+      toast.success("User created successfully...");
+      signIn("credentials", {
         email: data.email,
         password: data.password,
-       redirect: false,
-      }).then((callback)=>{
-        if(callback?.ok){
-          router.push('/cart')
-          router.reload();
-          toast.success("Logged in!")
+        redirect: false,
+      }).then((callback) => {
+        if (callback?.ok) {
+          router.push("/cart");
+          router.refresh();
+          toast.success("Logged in!");
         }
 
-      if(callback?.error){
-        toast.error("Failed to login!")}   
-       })
+        if (callback?.error) {
+          toast.error(callback.error);
+        }
       });
-  }
-
+    });
   };
+
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/cart");
+      router.refresh();
+    }
+  }, []);
 
   return (
     <AuthContainer>
@@ -75,7 +85,7 @@ const RegisterClient = () => {
         <Button text="Sign up" onClick={handleSubmit(onSubmit)} />
         <div className="text-center my-2 text-sm font-bold">
           Already have an account?{" "}
-          <Link href="/login" className="underline  text-red-500">
+          <Link href="/login" className="underline text-red-500">
             Sign in!
           </Link>
         </div>
@@ -84,7 +94,7 @@ const RegisterClient = () => {
           text="Register with Google"
           outline
           icon={FaGoogle}
-          onClick={() => {}}
+          onClick={() => signIn("google")}
         />
       </div>
     </AuthContainer>

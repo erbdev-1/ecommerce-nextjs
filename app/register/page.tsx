@@ -1,9 +1,11 @@
 import RegisterClient from "../components/auth/RegisterClient";
+import { getCurrentUser } from "../actions/getCurrentUser";
 
-const Register = () => {
+const Register = async () => {
+  const currentUser = await getCurrentUser();
   return (
     <div>
-      <RegisterClient />
+      <RegisterClient currentUser={currentUser} />
     </div>
   );
 };

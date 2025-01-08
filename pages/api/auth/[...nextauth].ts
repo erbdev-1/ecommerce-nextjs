@@ -1,8 +1,9 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+// import { PrismaAdapter } from "@auth/prisma-adapter"
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
-import prisma from "../../../libs/prismadb";
+
+import prisma from "@/libs/prismadb";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 
@@ -13,18 +14,15 @@ export const authOptions: AuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
-
     CredentialsProvider({
-      // The name to display on the sign in form (e.g. "Sign in with...")
-      name: "Credentials",
-
+      name: "credentials",
       credentials: {
-        email: { label: "email", type: "email" },
-        password: { label: "Password", type: "password" },
+        email: { label: "email", type: "text" },
+        password: { label: "password", type: "password" },
       },
       async authorize(credentials, req) {
         if (!credentials?.email || !credentials.password) {
-          throw new Error("Please enter your email and password");
+          throw new Error("Invalid credentials...");
         }
         const user = await prisma.user.findUnique({
           where: {
@@ -33,7 +31,7 @@ export const authOptions: AuthOptions = {
         });
 
         if (!user || !user.hashedPassword) {
-          throw new Error("No user found with this email");
+          throw new Error("Invalid credentials...");
         }
 
         const comparePassword = await bcrypt.compare(
@@ -42,24 +40,20 @@ export const authOptions: AuthOptions = {
         );
 
         if (!comparePassword) {
-          throw new Error("Password is incorrect");
+          throw new Error("Invalid password...");
         }
 
         return user;
       },
     }),
   ],
-
   pages: {
     signIn: "/login",
   },
-
   debug: process.env.NODE_ENV === "development",
-
   session: {
     strategy: "jwt",
   },
-
   secret: process.env.NEXTAUTH_SECRET,
 };
 

@@ -10,8 +10,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
+import { User } from "@prisma/client";
+import { useEffect } from "react";
 
-const LoginClient = () => {
+interface LoginClientProps {
+  currentUser: User | null | undefined;
+}
+
+const LoginClient: React.FC<LoginClientProps> = ({ currentUser }) => {
   const router = useRouter();
   const {
     register,
@@ -35,6 +41,15 @@ const LoginClient = () => {
       }
     });
   };
+
+  // Redirect to cart if user is already logged in
+
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/cart");
+    }
+  }, [currentUser]);
+
   return (
     <AuthContainer>
       <div className="w-full md:w-[500px] p-3 shadow-lg rounded-md">
@@ -68,7 +83,7 @@ const LoginClient = () => {
           text="Sign in with Google"
           outline
           icon={FaGoogle}
-          onClick={() => {}}
+          onClick={() => signIn("google")}
         />
       </div>
     </AuthContainer>
