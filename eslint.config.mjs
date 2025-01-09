@@ -6,7 +6,7 @@ import pluginReact from "eslint-plugin-react";
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   {
-    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"], // Detect relevant file extensions
     languageOptions: {
       parserOptions: {
         ecmaVersion: "latest",
@@ -16,7 +16,7 @@ export default [
       globals: globals.browser,
     },
     rules: {
-      "react/react-in-jsx-scope": "off",
+      "react/react-in-jsx-scope": "off", // Disable unnecessary React rule for JSX scope
     },
   },
   pluginJs.configs.recommended,

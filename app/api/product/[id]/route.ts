@@ -8,7 +8,7 @@ export async function DELETE(
 ) {
   const { params } = context;
 
-  // Validate params
+  // Validate that the ID exists
   if (!params?.id) {
     return NextResponse.json(
       { error: "Product ID is required" },
@@ -18,24 +18,19 @@ export async function DELETE(
 
   const currentUser = await getCurrentUser();
 
-  // Check if the user has admin privileges
+  // Check if the user is authorized
   if (!currentUser || currentUser.role !== "ADMIN") {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
 
   try {
-    // Delete the product
+    // Attempt to delete the product from the database
     const product = await prisma.product.delete({
-      where: {
-        id: params.id,
-      },
+      where: { id: params.id },
     });
-
     return NextResponse.json(product, { status: 200 });
   } catch (error) {
     console.error("Error deleting product:", error);
-
-    // Handle database errors gracefully
     return NextResponse.json(
       { error: "Failed to delete product" },
       { status: 500 }
