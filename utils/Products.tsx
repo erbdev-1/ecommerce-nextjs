@@ -1,14 +1,14 @@
 export const products = [
   {
     id: "64a654593e91b8e73a351e9b",
-    name: "iphone 14",
+    name: "iphone 16",
     description: "Short description",
-    price: 2999,
+    price: 999,
     brand: "apple",
     category: "Phone",
     inStock: true,
     image:
-      "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1688622161445-iphone14-white.png?alt=media&token=fe2065e5-fdfe-4a6f-baa6-380b5fad90b8",
+      "https://images.unsplash.com/photo-1584839401450-accbe1a8ef7b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=nathan-dumlao-dvrh7Hpuyp4-unsplash.jpg&w=1920",
     reviews: [],
   },
   {
@@ -21,7 +21,7 @@ export const products = [
     category: "Accesories",
     inStock: true,
     image:
-      "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1688622161445-iphone14-white.png?alt=media&token=fe2065e5-fdfe-4a6f-baa6-380b5fad90b8",
+      "https://images.unsplash.com/photo-1625750319971-ee4b61e68df8?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=auguras-pipiras-ta7Y61vwnJ8-unsplash.jpg&w=1920",
     reviews: [
       {
         id: "64a65a6158b470c6e06959ee",
@@ -32,7 +32,7 @@ export const products = [
         createdDate: "2023-07-06T06:08:33.067Z",
         user: {
           id: "6475af156bad4917456e6e1e",
-          name: "Berkant Kaya",
+          name: "Erbdev",
           email: "example@gmail.com",
           emailVerified: null,
           image:
@@ -52,7 +52,7 @@ export const products = [
         createdDate: "2023-07-06T06:08:33.067Z",
         user: {
           id: "6475af156bad4917456e6e1e",
-          name: "Berkant Kaya",
+          name: "Erbdev",
           email: "example@gmail.com",
           emailVerified: null,
           image:
@@ -67,15 +67,15 @@ export const products = [
   },
   {
     id: "648437b38c44d52b9542e340",
-    name: "Apple iPhone 12, 64GB",
+    name: "Dell Inspiron 15 3000",
     description:
       'The product is refurbished, fully functional, and in excellent condition. Backed by the 90-day E~Shop Renewed Guarantee.\n- This pre-owned product has been professionally inspected, tested and cleaned by Amazon qualified vendors. It is not certified by Apple.\n- This product is in "Excellent condition". The screen and body show no signs of cosmetic damage visible from 12 inches away.\n- This product will have a battery that exceeds 80% capacity relative to new.\n- Accessories may not be original, but will be compatible and fully functional. Product may come in generic box.\n- Product will come with a SIM removal tool, a charger and a charging cable. Headphone and SIM card are not included.\n- This product is eligible for a replacement or refund within 90-day of receipt if it does not work as expected.\n- Refurbished phones are not guaranteed to be waterproof.',
-    price: 40,
+    price: 560,
     brand: "Apple",
     category: "Phone",
     inStock: true,
     image:
-      "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1688622161445-iphone14-white.png?alt=media&token=fe2065e5-fdfe-4a6f-baa6-380b5fad90b8",
+      "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=dell-8pb7Hq539Zw-unsplash.jpg&w=1920",
     reviews: [
       {
         id: "6499b4887402b0efd394d8f3",
@@ -86,7 +86,7 @@ export const products = [
         createdDate: "2023-06-26T15:53:44.483Z",
         user: {
           id: "6499b184b0e9a8c8709821d3",
-          name: "Berkant Kaya",
+          name: "Erbdev",
           email: "example1@gmail.com",
           emailVerified: null,
           image:
@@ -106,7 +106,7 @@ export const products = [
         createdDate: "2023-06-26T14:30:40.998Z",
         user: {
           id: "6475af156bad4917456e6e1e",
-          name: "Berkant Kaya",
+          name: "Erbdev",
           email: "example@gmail.com",
           emailVerified: null,
           image:
@@ -121,7 +121,7 @@ export const products = [
   },
   {
     id: "64a4e9e77e7299078334019f",
-    name: "Logitech MX Master ",
+    name: "Keyboard and Mouse Combo",
     description:
       "Cross computer control: Game changing capacity to navigate seamlessly on 3 computers, and copy paste text, images, and files from 1 to the other using Logitech flow\nDual connectivity: Use with upto 3 Windows or Mac computers via included Unifying receiver or Bluetooth Smart wireless technology. Gesture button- Yes",
     price: 70,
@@ -129,7 +129,7 @@ export const products = [
     category: "Accesories",
     inStock: true,
     image:
-      "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1688622161445-iphone14-white.png?alt=media&token=fe2065e5-fdfe-4a6f-baa6-380b5fad90b8",
+      "https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=lum3n--RBuQ2PK_L8-unsplash.jpg",
     reviews: [],
   },
   {
@@ -142,7 +142,7 @@ export const products = [
     category: "Watch",
     inStock: true,
     image:
-      "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1688622161445-iphone14-white.png?alt=media&token=fe2065e5-fdfe-4a6f-baa6-380b5fad90b8",
+      "https://images.unsplash.com/photo-1523395243481-163f8f6155ab?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=artur-luczka-OPeSKKUMva4-unsplash.jpg&w=1920",
     reviews: [],
   },
 ];
