@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js E-commerce Project
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Running the Development Server](#running-the-development-server)
+  - [Building for Production](#building-for-production)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
+- [Environment Variables](#environment-variables)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+Welcome to the **Next.js E-commerce** project! This application is a full-featured e-commerce platform built with Next.js, leveraging the latest web technologies to deliver a seamless shopping experience. It includes user authentication, product management, shopping cart functionality, and an administrative dashboard for managing products and users.
+
+## Features
+
+- **User Authentication:** Secure login and registration using [NextAuth](https://next-auth.js.org/).
+- **Product Management:** CRUD operations for products with Prisma ORM.
+- **Shopping Cart:** Users can add, update, and remove items from their cart.
+- **Admin Dashboard:** Accessible only to admin users for managing products and users.
+- **Responsive Design:** Built with [Tailwind CSS](https://tailwindcss.com/) for a responsive and modern UI.
+- **Server-Side Rendering:** Optimized for performance and SEO with Next.js.
 
 ## Getting Started
 
-First, run the development server:
+Follow these instructions to set up and run the project on your local machine.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project Structure
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+.
+├── .env
+├── .gitignore
+├── .next/
+│ ├── app-build-manifest.json
+│ ├── build/
+│ ├── build-manifest.json
+│ ├── cache/
+│ ├── fallback-build-manifest.json
+│ ├── package.json
+│ ├── react-loadable-manifest.json
+│ ├── server/
+│ ├── static/
+│ ├── trace
+│ ├── transform.js
+│ └── types/
+├── app/
+│ ├── actions/
+│ ├── admin/
+│ ├── api/
+│ ├── cart/
+│ ├── components/
+│ ├── globals.css
+│ ├── layout.tsx
+│ ├── login/
+│ ├── page.tsx
+│ ├── product/
+│ └── register/
+├── eslint.config.mjs
+├── hooks/
+│ └── ...
+├── libs/
+├── next-env.d.ts
+├── next.config.ts
+├── package.json
+├── pages/
+├── postcss.config.mjs
+├── prisma/
+│ └── schema.prisma
+├── provider/
+├── public/
+├── README.md
+├── tailwind.config.ts
+├── tsconfig.json
+└── utils/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key Directories and Files
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **`app/`**: Contains the main application code, including pages, components, and actions.
+- **`admin/`**: Admin-specific pages and components.
+- **`api/`**: API route handlers.
+- **`components/`**: Reusable React components.
+- **`actions/`**: Server-side actions like fetching data.
+- **`hooks/`**: Custom React hooks.
+- **`libs/`**: Shared libraries and utilities.
+- **`prisma/`**: Prisma ORM setup and database schema.
+- **`public/`**: Static assets like images and fonts.
+- **`utils/`**: Utility functions and helpers.
+- **`README.md`**: Project documentation.
+- **`next.config.ts`**: Next.js configuration.
+- **`tailwind.config.ts`**: Tailwind CSS configuration.
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Create a .env file in the root directory and add the following environment variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Database URL
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+DATABASE_URL="your_database_url"
 
-## Deploy on Vercel
+# NextAuth Secret
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+NEXTAUTH_SECRET="your_nextauth_secret"
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# JWT Secret
+
+JWT_SECRET="your_jwt_secret"
+
+# Other environment variables...# Database URL
+
+DATABASE_URL="your_database_url"

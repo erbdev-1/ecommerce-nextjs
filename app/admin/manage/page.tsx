@@ -1,3 +1,4 @@
+import React from "react";
 import { getCurrentUser } from "@/app/actions/getCurrentUser";
 import getProducts from "@/app/actions/getProducts";
 import WarningText from "@/app/components/WarningText";
