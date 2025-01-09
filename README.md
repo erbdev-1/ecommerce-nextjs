@@ -1,5 +1,12 @@
 # Next.js E-commerce Project
 
+<<<<<<< HEAD
+=======
+## Admin Dashboard
+- username : test@gmail.com
+- password : test12345
+
+>>>>>>> 4ba58ee261860759f9c8fdebf70d10257df284a8
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -33,10 +40,15 @@ Follow these instructions to set up and run the project on your local machine.
 
 ## Project Structure
 
+<<<<<<< HEAD
+=======
+Here's an overview of the project's directory structure:
+>>>>>>> 4ba58ee261860759f9c8fdebf70d10257df284a8
 .
 ├── .env
 ├── .gitignore
 ├── .next/
+<<<<<<< HEAD
 │ ├── app-build-manifest.json
 │ ├── build/
 │ ├── build-manifest.json
@@ -64,6 +76,35 @@ Follow these instructions to set up and run the project on your local machine.
 ├── eslint.config.mjs
 ├── hooks/
 │ └── ...
+=======
+│   ├── app-build-manifest.json
+│   ├── build/
+│   ├── build-manifest.json
+│   ├── cache/
+│   ├── fallback-build-manifest.json
+│   ├── package.json
+│   ├── react-loadable-manifest.json
+│   ├── server/
+│   ├── static/
+│   ├── trace
+│   ├── transform.js
+│   └── types/
+├── app/
+│   ├── actions/
+│   ├── admin/
+│   ├── api/
+│   ├── cart/
+│   ├── components/
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── login/
+│   ├── page.tsx
+│   ├── product/
+│   └── register/
+├── eslint.config.mjs
+├── hooks/
+│   └── ...
+>>>>>>> 4ba58ee261860759f9c8fdebf70d10257df284a8
 ├── libs/
 ├── next-env.d.ts
 ├── next.config.ts
@@ -71,7 +112,11 @@ Follow these instructions to set up and run the project on your local machine.
 ├── pages/
 ├── postcss.config.mjs
 ├── prisma/
+<<<<<<< HEAD
 │ └── schema.prisma
+=======
+│   └── schema.prisma
+>>>>>>> 4ba58ee261860759f9c8fdebf70d10257df284a8
 ├── provider/
 ├── public/
 ├── README.md
