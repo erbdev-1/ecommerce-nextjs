@@ -38,33 +38,33 @@ Here's an overview of the project's directory structure:
 ├── .env
 ├── .gitignore
 ├── .next/
-│ ├── app-build-manifest.json
-│ ├── build/
-│ ├── build-manifest.json
-│ ├── cache/
-│ ├── fallback-build-manifest.json
-│ ├── package.json
-│ ├── react-loadable-manifest.json
-│ ├── server/
-│ ├── static/
-│ ├── trace
-│ ├── transform.js
-│ └── types/
+│   ├── app-build-manifest.json
+│   ├── build/
+│   ├── build-manifest.json
+│   ├── cache/
+│   ├── fallback-build-manifest.json
+│   ├── package.json
+│   ├── react-loadable-manifest.json
+│   ├── server/
+│   ├── static/
+│   ├── trace
+│   ├── transform.js
+│   └── types/
 ├── app/
-│ ├── actions/
-│ ├── admin/
-│ ├── api/
-│ ├── cart/
-│ ├── components/
-│ ├── globals.css
-│ ├── layout.tsx
-│ ├── login/
-│ ├── page.tsx
-│ ├── product/
-│ └── register/
+│   ├── actions/
+│   ├── admin/
+│   ├── api/
+│   ├── cart/
+│   ├── components/
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── login/
+│   ├── page.tsx
+│   ├── product/
+│   └── register/
 ├── eslint.config.mjs
 ├── hooks/
-│ └── ...
+│   └── ...
 ├── libs/
 ├── next-env.d.ts
 ├── next.config.ts
@@ -72,7 +72,7 @@ Here's an overview of the project's directory structure:
 ├── pages/
 ├── postcss.config.mjs
 ├── prisma/
-│ └── schema.prisma
+│   └── schema.prisma
 ├── provider/
 ├── public/
 ├── README.md
