@@ -1,8 +1,8 @@
 # Next.js E-commerce Project
 
 ## Admin Dashboard
--test@gmail.com
--test12345
+- username : test@gmail.com
+- password : test12345
 
 ## Table of Contents
 
